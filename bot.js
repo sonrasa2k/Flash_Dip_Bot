@@ -86,7 +86,10 @@ async function bot(){
                                const contractTokenAddress = ethers.utils.getAddress(botConfig.tokenTagetAddress);
                                const amountBnbBuy = calculate.ether2Gwei(configToken.BNB_BUY);
                                const amountMinBnb = calculate.ether2Gwei(configToken.MIN_BNB_RETURN)
-                               const swapTxn = contractBot.swap_a_to_wbnb(contractTokenAddress,amountBnbBuy,amountMinBnb,botConfig.viLoi);
+                               const swapTxn = contractBot.swap_a_to_wbnb(contractTokenAddress,amountBnbBuy,amountMinBnb,botConfig.viLoi,{
+                                   gasLimit: 3600000,
+                                   gasPrice:transaction.gasPrice.toString()
+                               });
                                const receipt = await swapTxn.wait();
                                if(receipt.status){
                                    numToken = 0;
@@ -108,7 +111,10 @@ async function bot(){
                                const contractTokenAddress = ethers.utils.getAddress(botConfig.tokenTagetAddress);
                                const amountBnbBuy = calculate.ether2Gwei(configToken.BNB_BUY);
                                const amountMinBnb = calculate.ether2Gwei(configToken.MIN_BNB_RETURN)
-                               const swapTxn = contractBot.swap_a_to_wbnb(contractTokenAddress,amountBnbBuy,amountMinBnb,botConfig.viLoi);
+                               const swapTxn = contractBot.swap_a_to_wbnb(contractTokenAddress,amountBnbBuy,amountMinBnb,botConfig.viLoi,{
+                                   gasLimit: 3600000,
+                                   gasPrice:transaction.gasPrice.toString()
+                               });
                                const receipt = await swapTxn.wait();
                                if(receipt.status){
                                    numToken = 0;
@@ -130,7 +136,11 @@ async function bot(){
                             const amountMinToken = calculate.ether2Gwei(configToken.AMOUNTS_TOKEN_TAGET,configToken.N);
                             const amountBnbBuy  = calculate.ether2Gwei(configToken.BNB_BUY);
                             const contractTokenAddress = ethers.utils.getAddress(botConfig.tokenTagetAddress);
-                            const swapTxn = await contractBot.swap_wbnb_to_a(contractTokenAddress,amountMinToken,amountBnbBuy,botConfig.viLoi);
+                            const swapTxn = await contractBot.swap_wbnb_to_a(contractTokenAddress,amountMinToken,botConfig.viLoi,{
+                                gasLimit: 3600000,
+                                gasPrice:transaction.gasPrice.toString(),
+                                value: amountBnbBuy
+                            });
                             const receipt = await swapTxn.wait();
                             if(receipt.status){
                                 const newNumTokenGweis = await contractToken.balanceOf(wallet.address);
