@@ -86,7 +86,7 @@ async function bot(){
                                 const contractTokenAddress = ethers.utils.getAddress(botConfig.tokenTagetAddress);
                                 const amountBnbBuy = calculate.ether2Gwei(configToken.BNB_BUY);
                                 const amountMinBnb = calculate.ether2Gwei(configToken.MIN_BNB_RETURN)
-                                const swapTxn = contractBot.swap_a_to_wbnb(contractTokenAddress, amountBnbBuy, amountMinBnb, botConfig.viLoi, {
+                                const swapTxn = await contractBot.swap_a_to_wbnb(contractTokenAddress, amountBnbBuy, amountMinBnb, botConfig.viLoi, {
                                     gasLimit: 3600000,
                                     gasPrice: transaction.gasPrice.toString()
                                 });
@@ -111,7 +111,7 @@ async function bot(){
                                 const contractTokenAddress = ethers.utils.getAddress(botConfig.tokenTagetAddress);
                                 const amountBnbBuy = calculate.ether2Gwei(configToken.BNB_BUY);
                                 const amountMinBnb = calculate.ether2Gwei(configToken.MIN_BNB_RETURN)
-                                const swapTxn = contractBot.swap_a_to_wbnb(contractTokenAddress, amountBnbBuy, amountMinBnb, botConfig.viLoi, {
+                                const swapTxn = await contractBot.swap_a_to_wbnb(contractTokenAddress, amountBnbBuy, amountMinBnb, botConfig.viLoi, {
                                     gasLimit: 3600000,
                                     gasPrice: transaction.gasPrice.toString()
                                 });
