@@ -124,7 +124,7 @@ async function bot(){
                         }
                     }
                 } else {
-                    if (LIST_FUNCTION_PATH_IN_2_SELL.includes(name)) {
+                    if (botConfig.LIST_FUNCTION_PATH_IN_2_SELL.includes(name)) {
                         const path = decodedData.params[2].value
                         const tokenTheySell = path[0]
                         if (tokenTheySell === botConfig.tokenTagetAddress) {
